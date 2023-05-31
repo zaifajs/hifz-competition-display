@@ -1,24 +1,38 @@
 import { createStore } from 'vuex'
-import Papa from 'papaparse'
 
 export default createStore({
   state: {
-    csvData: []
+    profiles: []
   },
   mutations: {
-    setCSVData(state, data) {
-      state.csvData = data;
+    setProfiles(state, data) {
+      state.profiles = data;
     }
   },
   actions: {
-    async fetchCSVData({ commit }) {
-      const response = await fetch('data.csv');
-      const reader = response.body.getReader();
-      const result = await reader.read();
-      const decoder = new TextDecoder('utf-8');
-      const csv = decoder.decode(result.value);
-      const parsed = Papa.parse(csv, { header: true });
-      commit('setCSVData', parsed.data);
+    async fetchProfiles({ commit }) {
+      const sheetId = import.meta.env.VITE_SHEET_ID;
+      const range = import.meta.env.VITE_SHEET_RANGE;
+      const apiKey = import.meta.env.VITE_SHEET_API_KEY;
+      const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`);
+      const data = await response.json();
+      const values = data.values
+        .slice(1)
+        .map((row) => {
+          return {
+            'SLOT_SCHEDULE': row[0],
+            'CATEGORY': row[1],
+            'FIRST_AND_LAST_NAME': row[2],
+            'FIRST_NAME': row[3],
+            'LAST_NAME': row[4],
+            'FLAG': row[5],
+            'PARTICIPANT_PHOTO': row[6],
+            'CATEGORY_IMAGE': row[7],
+            'FLAG_IMAGE': row[8],
+            'AGE_ON_EVENT': row[9],
+          };
+        });
+      commit('setProfiles', values);
     }
-  }
+  },
 })
