@@ -43,10 +43,10 @@ const isNextBtnDisabled = () => {
 
 <template>
   <header>
-    <div class="dis-f p-1">
+    <div class="container  header-content">
       <select id="selectedProfile-select" v-model="selectedIndex">
         <option v-for="(data, index) in allProfiles" :key="index" :value="index">
-          {{ data['FIRST_AND_LAST_NAME'] }}
+          {{index+1}} - {{ data['FIRST_AND_LAST_NAME'] }}
         </option>
       </select>
 
@@ -57,49 +57,60 @@ const isNextBtnDisabled = () => {
     </div>
   </header>
 
-  <main v-if="selectedProfile" class="dis-f">
-    <div class="left-panel p-1">
-      <img :src="'profiles/' + selectedProfile['PARTICIPANT_PHOTO']" />
-    </div>
+  <main v-if="selectedProfile" class="">
+    <div class="main-content container">
+      <div class="left-panel">
+        <img src="./assets/images/ibr.jpg" />
+        <!-- <img :src="'profiles/' + selectedProfile['PARTICIPANT_PHOTO']" /> -->
+      </div>
 
-    <div class="right-panel p-1">
-      <div class="name">{{ selectedProfile['FIRST_NAME'] }} <span>{{ selectedProfile['LAST_NAME'] }}</span></div>
-      <div class="meta dis-f">
-        <div class="age">Age <span>{{ selectedProfile['AGE_ON_EVENT'] }}</span></div>
-        <div class="country">
-          <div class="flag dis-f">
-            <span>country </span>
-            <div class="dis-f">
-              <img :src="'flags/' + selectedProfile['FLAG_IMAGE']" class="flag" />
-              <span>{{ selectedProfile['FLAG'] }}</span>
+      <div class="right-panel">
+
+        <div class="name-container">
+          <div class="name">
+              {{ selectedProfile['FIRST_NAME'] }}
+              <span class="name-last">{{ selectedProfile['LAST_NAME'] }}</span>
+          </div>
+        </div>
+        <div class="details-container">
+          <div class="div">
+            <div class="age-container">
+              <div class="meta">
+                <div class="title">AGE</div>
+                <div class="sub-title">AGE</div>
+              </div>
+               <span class="age">{{ selectedProfile['AGE_ON_EVENT'] }}</span>
+            </div>
+            <div class="country">
+              <div class="flag">
+                <div class="meta">
+                  <div class="title">COUNTRY</div>
+                  <div class="sub-title">PAÍS</div>
+                </div>
+                <div class="flag-detials">
+                  <img width="100" :src="'flags/' + selectedProfile['FLAG_IMAGE']" class="flag" />
+                  <span>{{ selectedProfile['FLAG'] }}</span>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="category">
+            <div class="meta">
+              <div class="title">CATEGORY</div>
+              <div class="sub-title">CATEGORIA</div>
+            </div>
+            <img :src="'categories/' + selectedProfile['CATEGORY_IMAGE']" />
+          </div>
+        </div>
+        <div class="logo-container">
+          <img :src="'categories/' + selectedProfile['CATEGORY_IMAGE']" />
         </div>
       </div>
 
-      <div class="category"><span>category</span> <img :src="'categories/' + selectedProfile['CATEGORY_IMAGE']" /></div>
     </div>
   </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-.dis-f {
-  display: flex;
-}
-.dis-f-col {
-  flex-direction: column;
-}
-.dis-f-row {
-  flex-direction: row;
-}
-.p-1 {
-  padding: 10px;
-}
-.flag {
-  width: 100px;
-  height: 100px;
-}
+<style>
+
 </style>
