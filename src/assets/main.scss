@@ -34,7 +34,7 @@ button {
   margin-right: 5px;
 }
 .container {
-  max-width: calc(100vw - 10%);
+  max-width: calc(100vw - 5%);
   margin: 0 auto;
 }
 header {
@@ -62,6 +62,10 @@ main {
     border: 10px solid $orange;
     border-radius: 32px;
     border-bottom-left-radius: 0;
+  }
+  .logo-container {
+    padding-top: 40px;
+    padding-left: 48px;
   }
 }
 
@@ -96,12 +100,13 @@ main {
       padding-left: 48px;
       height: 190px;
       font-size: 84px;
-      line-height: 80px;
+
       background: url(./images/name-bg.png) no-repeat;
       border-bottom: 6px solid $green;
 
       * {
         letter-spacing: 5px;
+        line-height: 72px;
       }
 
       .name-last {
@@ -166,6 +171,10 @@ main {
       }
       .category {
         flex-basis: 100%;
+        padding-top: 48px;
+        .meta {
+          padding-right: 75px;
+        }
         img {
           height: 120px;
         }

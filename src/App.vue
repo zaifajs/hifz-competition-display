@@ -103,7 +103,7 @@ const isNextBtnDisabled = () => {
           </div>
         </div>
         <div class="logo-container">
-          <img :src="'categories/' + selectedProfile['CATEGORY_IMAGE']" />
+          <img height="85" src="./assets/images/organization_logos.jpg" />
         </div>
       </div>
 
