@@ -15,7 +15,7 @@ $green: #4FAD9B;
   display: flex;
   flex-direction: column;
 }
-select {
+select, input {
   padding: 10px 20px;
   font-size: 20px;
   letter-spacing: 2px;
@@ -42,6 +42,11 @@ header {
   .header-content {
     display: flex;
     padding: 10px;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+    }
   }
 }
 main {
