@@ -1,5 +1,6 @@
 @import './base.css';
 $light: #989898;
+$light2: #989898;
 $gray: #717171;
 $orange: #D2910F;
 $green: #4FAD9B;
@@ -75,7 +76,7 @@ main {
 }
 
 // STYLES PROFILE PAGE
-.main-content {
+.main-content.profile {
   display: flex;
 
   .left-panel {
@@ -188,5 +189,82 @@ main {
   }
 }
 
-@media (min-width: 1024px) {
+// STYLES TV OUTPUT PAGE
+.main-content.tv-output {
+  display: flex;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  overflow: hidden;
+
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    flex: 1;
+
+  .stream-space {
+    flex: 1;
+    height: 100%;
+    background-color: ghostwhite;
+  }
+  .details-container {
+    display: flex;
+    align-items: center;
+    background-image: url(../assets/images/name-bg-tv.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 86px;
+    border-bottom: 6px solid $green;
+
+    .name-container {
+      font-size: 32px;
+      letter-spacing: 2px;
+      padding-left: 20px;
+      flex: 1;
+
+      span {
+        font-weight: 600;
+      }
+    }
+    .country {
+      display: flex;
+      align-items: center;
+      width: 40%;
+      font-size: 28px;
+      letter-spacing: 2px;
+      img {
+        width: 45px;
+        margin-right: 10px;
+      }
+    }
+  }
+    .org-logo-container {
+      justify-content: space-between;
+      display: flex;
+      align-items: end;
+      padding-top: 50px;
+
+      .org-logos {
+        height: 85px;
+      }
+      .category {
+        img {
+          height: 56px;
+        }
+      }
+    }
+  }
+  .right-panel {
+    border-left: 6px solid rgba($color: $light2, $alpha: 0.4);
+    margin-left: 48px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      object-fit: contain;
+    }
+  }
 }
