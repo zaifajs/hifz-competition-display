@@ -49,8 +49,8 @@ const isNextBtnDisabled = () => {
         </select>
 
         <div class="p-1">
-          <button @click="onPrev" :disabled="isPrevBtnDisabled()">prev</button>
-          <button @click="onNext" :disabled="isNextBtnDisabled()">next</button>
+          <button @click="onPrev" :disabled="isPrevBtnDisabled()">⬅️</button>
+          <button @click="onNext" :disabled="isNextBtnDisabled()">➡️</button>
         </div>
       </div>
 
