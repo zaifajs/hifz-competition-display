@@ -35,7 +35,7 @@ button {
   margin-right: 5px;
 }
 .container {
-  max-width: calc(100vw - 5%);
+  max-width: calc(100vw - 15%);
   margin: 0 auto;
 }
 header {
@@ -95,7 +95,6 @@ main {
       max-height: 100%;
       object-fit: contain;
       object-position: bottom;
-      background-color: aliceblue;
     }
   }
 
@@ -186,7 +185,7 @@ main {
           padding-right: 75px;
         }
         img {
-          height: 120px;
+          height: 100px;
         }
       }
     }
@@ -206,12 +205,11 @@ main {
     flex-direction: column;
     padding-top: 48px;
     padding-bottom: 48px;
-    flex: 1;
+    width: 55%;
 
   .stream-space {
-    flex: 1;
-    height: 100%;
-    background-color: ghostwhite;
+    aspect-ratio: 16 / 9;
+    background-color: gray;
   }
   .details-container {
     display: flex;
@@ -262,12 +260,15 @@ main {
   }
   .right-panel {
     border-left: 6px solid rgba($color: $light2, $alpha: 0.4);
-    margin-left: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
 
     img {
-      width: 100%;
       height: 100%;
       padding: 10px;
+      padding-left: 12%;
       object-fit: contain;
     }
   }
