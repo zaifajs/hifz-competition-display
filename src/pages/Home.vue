@@ -8,7 +8,7 @@ const { selectedProfile } = defineProps({
   <main v-if="selectedProfile" class="">
     <div class="main-content container profile">
       <div class="left-panel">
-        <img :src="'src/assets/images/participants/' + selectedProfile['PARTICIPANT_PHOTO']" />
+        <img :src="'/participants/' + selectedProfile['PARTICIPANT_PHOTO']" />
       </div>
 
       <div class="right-panel">
