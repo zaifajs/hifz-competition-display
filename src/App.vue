@@ -27,7 +27,6 @@ const onChangePageNo = (pageNo) => {
 </script>
 
 <template>
-  <!-- test comment -->
   <Navbar v-if="store.state.profiles.length" :profiles="store.state.profiles" :onSelectProfile="onSelectProfile" :onChangePageNo="onChangePageNo">
   </Navbar>
 

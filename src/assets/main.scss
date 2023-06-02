@@ -35,8 +35,11 @@ button {
   margin-right: 5px;
 }
 .container {
-  max-width: calc(100vw - 15%);
+  max-width: calc(100vw - 5%);
   margin: 0 auto;
+  &.tv-output {
+    max-width: calc(100vw - 15%);
+  }
 }
 header {
   background-color: #000;
