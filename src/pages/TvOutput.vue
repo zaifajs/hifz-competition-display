@@ -1,6 +1,7 @@
 <script setup>
-const { selectedProfile } = defineProps({
+const { selectedProfile, selectedPageNo } = defineProps({
   selectedProfile: Object | null,
+  selectedPageNo: Number,
 });
 </script>
 
@@ -33,7 +34,7 @@ const { selectedProfile } = defineProps({
       </div>
 
       <div class="right-panel">
-        <img src="../assets/images/007.png" alt="">
+        <img :src="'/quran/'+String(selectedPageNo).padStart(3, '0')+'.png'" alt="">
       </div>
     </div>
   </main>

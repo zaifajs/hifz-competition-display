@@ -22,7 +22,6 @@ const onSelectProfile = (selectedIndex) => {
 const onChangePageNo = (pageNo) => {
   if (!isNaN(pageNo) && pageNo > 0) {
     selectedPageNo.value = pageNo;
-    console.log('selectedPageNo.value', selectedPageNo.value)
   }
 }
 </script>
@@ -31,7 +30,7 @@ const onChangePageNo = (pageNo) => {
   <Navbar v-if="store.state.profiles.length" :profiles="store.state.profiles" :onSelectProfile="onSelectProfile" :onChangePageNo="onChangePageNo">
   </Navbar>
 
-  <router-view v-if="selectedProfile" :selectedProfile="selectedProfile" />
+  <router-view v-if="selectedProfile" :selectedProfile="selectedProfile" :selectedPageNo="selectedPageNo" />
 </template>
 
 <style></style>

@@ -55,7 +55,7 @@ const isNextBtnDisabled = () => {
       </div>
 
       <div v-if="currentRoute.path == ROUTE_TV_OUTPUT">
-        <input v-model="pageNo" type="number" min="1" max="604" placeholder="Page">
+        <input v-model="pageNo" type="number" min="1" max="619" placeholder="Page">
       </div>
       <div v-else>
         <RouterLink :to="{ path: ROUTE_TV_OUTPUT }">TV Output</RouterLink>
