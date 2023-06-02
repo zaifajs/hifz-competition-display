@@ -20,10 +20,12 @@ jobs:
         run: npm run build
 
       - name: Upload via SFTP
-        uses: Automattic/FTP-Deploy-Action@3.0.1
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          ftp-server: ${{ secrets.SFTP_SERVER }}
-          ftp-username: ${{ secrets.SFTP_USERNAME }}
-          ftp-password: ${{ secrets.SFTP_PASSWORD }}
-          port: ${{ secrets.SFTP_PORT }}
-          local-dir: dist/
+            server: ${{ secrets.SFTP_SERVER }}
+            username: ${{ secrets.SFTP_USERNAME }}
+            password: ${{ secrets.SFTP_PASSWORD }}
+            port: ${{ secrets.SFTP_PORT }}
+            local_path: './dist/*'
+            remote_path: '/public_html'
+            sftp_only: true
