@@ -1,4 +1,5 @@
 <script setup>
+import { useKeypress } from "vue3-keypress";
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { ROUTE_TV_OUTPUT } from '../constants'
@@ -11,8 +12,9 @@ const { profiles, onSelectProfile, onChangePageNo } = defineProps({
   onChangePageNo: Function,
 })
 
-let selectedIndex = ref(0)
-let pageNo = ref(1)
+const isShortcutActive = ref(true)
+const selectedIndex = ref(0)
+const pageNo = ref(1)
 
 watch(selectedIndex, onSelectProfile)
 watch(pageNo, onChangePageNo)
@@ -36,6 +38,23 @@ const isPrevBtnDisabled = () => {
 const isNextBtnDisabled = () => {
   return selectedIndex.value == profiles.length - 1
 }
+
+useKeypress({
+  keyEvent: "keyup",
+  keyBinds: [
+    {
+      keyCode: "left",
+      success: onPrev,
+      preventDefault: false, // the default is true
+    },
+    {
+      keyCode: "right",
+      success: onNext,
+      preventDefault: false, // the default is true
+    },
+  ],
+  isActive: isShortcutActive,
+});
 </script>
 
 <template>
@@ -55,7 +74,7 @@ const isNextBtnDisabled = () => {
       </div>
 
       <div v-if="currentRoute.path == ROUTE_TV_OUTPUT">
-        <input v-model="pageNo" type="number" min="1" max="619" placeholder="Page">
+        <input v-model="pageNo" @focus="() => isShortcutActive = false" @blur="() => isShortcutActive = true" type="number" min="1" max="619" placeholder="Page">
       </div>
       <div v-else>
         <RouterLink :to="{ path: ROUTE_TV_OUTPUT }">TV Output</RouterLink>

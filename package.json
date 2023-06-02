@@ -12,6 +12,7 @@
   "dependencies": {
     "vue": "^3.3.2",
     "vue-router": "^4.2.2",
+    "vue3-keypress": "^4.0.1",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
