@@ -104,6 +104,7 @@ main {
   .right-panel {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex: 1;
 
     .name-container {
@@ -183,7 +184,7 @@ main {
       }
       .category {
         flex-basis: 100%;
-        padding-top: 48px;
+        padding-top: 58px;
         .meta {
           padding-right: 75px;
         }
