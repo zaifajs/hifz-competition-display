@@ -17,6 +17,7 @@ $green: #4FAD9B;
   flex-direction: column;
 }
 select, input {
+  min-width: 200px;
   padding: 10px 20px;
   font-size: 20px;
   letter-spacing: 2px;
