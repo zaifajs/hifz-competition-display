@@ -75,16 +75,17 @@ main {
     border-radius: 32px;
     border-bottom-left-radius: 0;
   }
-  .logo-container {
-    margin-top: auto;
-    padding-left: 48px;
-  }
+
 }
 
 // STYLES PROFILE PAGE
 .main-content.profile {
   display: flex;
 
+  .logo-container {
+    margin-top: auto;
+    padding-left: 48px;
+  }
   .left-panel {
     max-width: 480px;
     width: 100%;
@@ -114,14 +115,14 @@ main {
       display: flex;
       align-items: center;
       padding-left: 48px;
-      min-height: 190px;
+      min-height: 250px;
       font-size: 85px;
 
       background: url(./images/name-bg.png) no-repeat;
       border-bottom: 6px solid $green;
 
       * {
-        line-height: 78px;
+        line-height: 85px;
         letter-spacing: 5px;
       }
 
@@ -131,8 +132,8 @@ main {
     }
     .details-container {
       padding-left: 48px;
-      padding-top:38px;
-      padding-bottom: 38px;
+      padding-top: 58px;
+      padding-bottom: 58px;
       border-bottom: 6px solid $green;
 
       > div {
@@ -188,7 +189,7 @@ main {
       }
       .category {
         flex-basis: 100%;
-        padding-top: 48px;
+        padding-top: 58px;
         .meta {
           padding-right: 75px;
         }

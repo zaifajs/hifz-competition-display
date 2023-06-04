@@ -50,7 +50,7 @@ const { selectedProfile } = defineProps({
           </div>
         </div>
         <div class="logo-container">
-          <img height="85" src="../assets/images/organization_logos.jpg" />
+          <img height="100" src="../assets/images/organization_logos.jpg" />
         </div>
       </div>
 
