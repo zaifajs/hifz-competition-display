@@ -88,9 +88,11 @@ main {
     max-width: 480px;
     width: 100%;
     border-right: 6px solid $green;
+    background: #ebfff7;
     display: flex;
     max-height: 100%;
     flex: 1;
+    overflow: hidden;
 
     img {
       width: 100%;
@@ -98,6 +100,7 @@ main {
       max-height: 100%;
       object-fit: contain;
       object-position: bottom;
+      transform: scale(1.2);
     }
   }
 
@@ -111,15 +114,15 @@ main {
       display: flex;
       align-items: center;
       padding-left: 48px;
-      height: 190px;
-      font-size: 84px;
+      min-height: 190px;
+      font-size: 85px;
 
       background: url(./images/name-bg.png) no-repeat;
       border-bottom: 6px solid $green;
 
       * {
+        line-height: 78px;
         letter-spacing: 5px;
-        line-height: 72px;
       }
 
       .name-last {
@@ -128,8 +131,8 @@ main {
     }
     .details-container {
       padding-left: 48px;
-      padding-top: 48px;
-      padding-bottom: 48px;
+      padding-top:28px;
+      padding-bottom: 28px;
       border-bottom: 6px solid $green;
 
       > div {
@@ -184,12 +187,12 @@ main {
       }
       .category {
         flex-basis: 100%;
-        padding-top: 58px;
+        padding-top: 48px;
         .meta {
           padding-right: 75px;
         }
         img {
-          height: 100px;
+          height: 90px;
           //height updated
         }
       }
@@ -204,13 +207,17 @@ main {
   padding-bottom: 0;
   padding-right: 0;
   overflow: hidden;
+  justify-content: start;
+  align-items: start;
 
   .left-panel {
     display: flex;
     flex-direction: column;
     padding-top: 48px;
+    padding-right: 48px;
     padding-bottom: 48px;
-    width: 55%;
+    justify-content: stretch;
+    flex: 1;
 
   .stream-space {
     aspect-ratio: 16 / 9;
@@ -265,16 +272,19 @@ main {
   }
   .right-panel {
     border-left: 6px solid rgba($color: $light2, $alpha: 0.4);
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     justify-content: center;
 
     img {
-      height: 100%;
-      padding: 10px;
-      padding-left: 12%;
-      object-fit: contain;
+      width: 100%;
+      max-width: 530px;
+      min-width: 530px;
+      padding: 5%;
+      height: auto;
     }
   }
+}
+
+.min-w-250 {
+  width: 250px;
 }

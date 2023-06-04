@@ -76,9 +76,6 @@ useKeypress({
       <div v-if="currentRoute.path == ROUTE_TV_OUTPUT">
         <input v-model="pageNo" @focus="() => isShortcutActive = false" @blur="() => isShortcutActive = true" type="number" min="1" max="619" placeholder="Page">
       </div>
-      <div v-else>
-        <RouterLink :to="{ path: ROUTE_TV_OUTPUT }">TV Output</RouterLink>
-      </div>
     </div>
   </header>
 </template>

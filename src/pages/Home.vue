@@ -22,9 +22,9 @@ const { selectedProfile } = defineProps({
         <div class="details-container">
           <div class="div">
             <div class="age-container">
-              <div class="meta">
+              <div class="meta min-w-250">
                 <div class="title">AGE</div>
-                <div class="sub-title">AGE</div>
+                <div class="sub-title">IDADE</div>
               </div>
               <span class="age">{{ selectedProfile['AGE_ON_EVENT'] }}</span>
             </div>
@@ -42,7 +42,7 @@ const { selectedProfile } = defineProps({
             </div>
           </div>
           <div class="category">
-            <div class="meta">
+            <div class="meta min-w-250">
               <div class="title">CATEGORY</div>
               <div class="sub-title">CATEGORIA</div>
             </div>
