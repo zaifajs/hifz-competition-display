@@ -25,7 +25,7 @@ const { selectedProfile, selectedPageNo } = defineProps({
 
         <div class="org-logo-container">
           <div class="org-logos">
-            <img height="85" src="../assets/images/organization_logos.jpg" />
+            <img src="../assets/images/organization_logos.jpg" />
           </div>
           <div class="category">
             <img :src="'categories/' + selectedProfile['CATEGORY_IMAGE']" />
@@ -34,7 +34,9 @@ const { selectedProfile, selectedPageNo } = defineProps({
       </div>
 
       <div class="right-panel">
-        <img :src="'/quran/'+String(selectedPageNo).padStart(3, '0')+'.png'" alt="">
+        <div class="page-wrapper">
+          <img :src="'/quran/'+String(selectedPageNo).padStart(3, '0')+'.png'" alt="">
+        </div>
       </div>
     </div>
   </main>

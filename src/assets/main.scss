@@ -76,7 +76,7 @@ main {
     border-bottom-left-radius: 0;
   }
   .logo-container {
-    padding-top: 40px;
+    margin-top: auto;
     padding-left: 48px;
   }
 }
@@ -89,7 +89,7 @@ main {
     max-width: 480px;
     width: 100%;
     border-right: 6px solid $green;
-    background: #ebfff7;
+    background: #f5f5f5;
     display: flex;
     max-height: 100%;
     flex: 1;
@@ -108,7 +108,6 @@ main {
   .right-panel {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     flex: 1;
 
     .name-container {
@@ -132,8 +131,8 @@ main {
     }
     .details-container {
       padding-left: 48px;
-      padding-top:28px;
-      padding-bottom: 28px;
+      padding-top:38px;
+      padding-bottom: 38px;
       border-bottom: 6px solid $green;
 
       > div {
@@ -161,6 +160,7 @@ main {
 
       .age {
         font-size: 80px;
+        margin-left: -10px;
       }
       .country {
         display: flex;
@@ -217,8 +217,9 @@ main {
     padding-top: 48px;
     padding-right: 48px;
     padding-bottom: 48px;
-    justify-content: stretch;
-    flex: 1;
+    justify-content: space-between;
+    height: 100%;
+    min-width: 60%;
 
   .stream-space {
     aspect-ratio: 16 / 9;
@@ -230,7 +231,7 @@ main {
     background-image: url(../assets/images/name-bg-tv.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 86px;
+    height: 110px;
     border-bottom: 6px solid $green;
 
     .name-container {
@@ -238,6 +239,7 @@ main {
       letter-spacing: 2px;
       padding-left: 20px;
       flex: 1;
+      line-height: 30px;
 
       span {
         font-weight: 600;
@@ -259,14 +261,18 @@ main {
       justify-content: space-between;
       display: flex;
       align-items: end;
-      padding-top: 50px;
+      margin-top: auto;
+      padding-top: 38px;
 
       .org-logos {
-        height: 85px;
+        width: 100%;
+        img {
+          height: 75px;
+        }
       }
       .category {
         img {
-          height: 56px;
+          height: 50px;
         }
       }
     }
@@ -275,13 +281,23 @@ main {
     border-left: 6px solid rgba($color: $light2, $alpha: 0.4);
     display: flex;
     justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    .page-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     img {
-      width: 100%;
+      max-height: calc(100% - 20px);
+      /* border: 1px solid red;
       max-width: 530px;
       min-width: 530px;
-      padding: 5%;
-      height: auto;
+      object-fit: contain;
+      height: auto; */
     }
   }
 }

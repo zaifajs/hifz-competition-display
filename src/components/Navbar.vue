@@ -63,7 +63,7 @@ useKeypress({
       <div class="left-side">
         <select id="selectedProfile-select" v-model="selectedIndex">
           <option v-for="(data, index) in profiles" :key="index" :value="index">
-            {{ index + 1 }} - {{ data['FIRST_AND_LAST_NAME'] }}
+            {{ data['FIRST_AND_LAST_NAME'] }}
           </option>
         </select>
 
