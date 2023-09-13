@@ -35,7 +35,7 @@ const { selectedProfile, selectedPageNo } = defineProps({
 
       <div class="right-panel">
         <div class="page-wrapper">
-          <img :src="'/quran/'+String(selectedPageNo).padStart(3, '0')+'.png'" alt="">
+          <img :src="'/fip/quran/'+String(selectedPageNo).padStart(3, '0')+'.png'" alt="">
         </div>
       </div>
     </div>
