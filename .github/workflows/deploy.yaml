@@ -27,5 +27,5 @@ jobs:
             password: ${{ secrets.SFTP_PASSWORD }}
             port: ${{ secrets.SFTP_PORT }}
             local_path: './dist/*'
-            remote_path: '/public_html/fip/'
+            remote_path: '/home/fip/htdocs/hifz-competition.org/fip/'
             sftp_only: true
