@@ -1,6 +1,6 @@
 #  hifz-competition
 
-This template should help get you started developing with Vue 3 in Vite.
+International Hifz Competition 2023, Lisbon - Participant display application built with Vue 3 and Vite.
 
 ## Recommended IDE Setup
 
