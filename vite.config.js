@@ -13,6 +13,9 @@ export default defineConfig({
   build: {
     minify: true,
   },
+  server: {
+    open: '/fip',
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL(baseUrl + 'src', import.meta.url))
