@@ -1,0 +1,68 @@
+// Design Tokens - Colors
+$color-light: #989898;
+$color-light-2: #989898;
+$color-gray: #717171;
+$color-orange: #D2910F;
+$color-green: #4FAD9B;
+$color-black: #000;
+$color-white: #fff;
+$color-bg-light: #f5f5f5;
+$color-error: #ff4444;
+$color-error-dark: #b87a0d;
+
+// Spacing System
+$spacing-xs: 10px;
+$spacing-sm: 20px;
+$spacing-md: 30px;
+$spacing-lg: 40px;
+$spacing-xl: 48px;
+$spacing-2xl: 58px;
+$spacing-3xl: 68px;
+$spacing-4xl: 75px;
+$spacing-5xl: 80px;
+
+// Typography
+$font-size-xs: 18px;
+$font-size-sm: 20px;
+$font-size-md: 28px;
+$font-size-lg: 30px;
+$font-size-xl: 32px;
+$font-size-2xl: 36px;
+$font-size-3xl: 40px;
+$font-size-4xl: 85px;
+$font-size-5xl: 80px;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$letter-spacing-sm: 2px;
+$letter-spacing-md: 5px;
+
+// Layout
+$header-height: 65px;
+$border-radius-sm: 8px;
+$border-radius-md: 16px;
+$border-radius-lg: 32px;
+$border-width: 6px;
+$border-width-lg: 10px;
+
+// Component Specific
+$quran-max-pages: 619;
+$container-padding: calc(100vw - 5%);
+$container-padding-tv: calc(100vw - 15%);
+$profile-image-max-width: 480px;
+$flag-size: 100px;
+$flag-size-tv: 45px;
+$category-image-height: 90px;
+$category-image-height-tv: 50px;
+$org-logo-height: 75px;
+$org-logo-height-tv: 100px;
+
+// Z-index
+$z-index-loader: 9999;
+
+// Transitions
+$transition-base: 0.3s;
+$transition-slow: 0.5s;

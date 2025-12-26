@@ -1,0 +1,57 @@
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Button Reset
+@mixin button-reset {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+// Input Reset
+@mixin input-reset {
+  border: 0;
+  outline: 0;
+}
+
+// Number Input Spinner Hide
+@mixin hide-number-spinner {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+// Text Styles
+@mixin text-meta {
+  .title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+  }
+  .sub-title {
+    font-size: $font-size-2xl;
+    font-style: italic;
+    color: $color-light;
+  }
+}
