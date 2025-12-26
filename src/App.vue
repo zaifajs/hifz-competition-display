@@ -20,9 +20,12 @@ const onSelectProfile = (selectedIndex) => {
   selectedProfile.value = store.state.profiles[selectedIndex]
 }
 
+import { QURAN_MIN_PAGE, QURAN_MAX_PAGES } from './constants';
+
 const onChangePageNo = (pageNo) => {
-  if (!isNaN(pageNo) && pageNo > 0) {
-    selectedPageNo.value = pageNo;
+  const page = Number(pageNo);
+  if (!isNaN(page) && page >= QURAN_MIN_PAGE && page <= QURAN_MAX_PAGES) {
+    selectedPageNo.value = page;
   }
 }
 </script>
@@ -85,9 +88,9 @@ const onChangePageNo = (pageNo) => {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
 
-.retry-button:hover {
-  background-color: #b87a0d;
+  &:hover {
+    background-color: #b87a0d;
+  }
 }
 </style>
