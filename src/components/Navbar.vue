@@ -1,60 +1,51 @@
 <script setup>
-import { useKeypress } from "vue3-keypress";
-import { ref, watch } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { ROUTE_TV_OUTPUT } from '../constants'
+import { ROUTE_HOME, ROUTE_TV_OUTPUT, QURAN_MIN_PAGE, QURAN_MAX_PAGES, PROFILE_FIELDS } from '../constants';
+import { useProfileNavigation } from '../composables/useProfileNavigation';
+import { useKeyboardShortcuts } from '../composables/useKeyboardShortcuts';
+
+const props = defineProps({
+  profiles: {
+    type: Array,
+    required: true,
+    default: () => [],
+  },
+  onSelectProfile: {
+    type: Function,
+    required: true,
+  },
+  onChangePageNo: {
+    type: Function,
+    required: true,
+  },
+});
 
 const currentRoute = useRoute();
+const pageNo = ref(QURAN_MIN_PAGE);
 
-const { profiles, onSelectProfile, onChangePageNo } = defineProps({
-  profiles: Array,
-  onSelectProfile: Function,
-  onChangePageNo: Function,
-})
+// Profile navigation
+const { selectedIndex, isPrevDisabled, isNextDisabled, goToPrev, goToNext } = useProfileNavigation(
+  computed(() => props.profiles),
+  props.onSelectProfile
+);
 
-const isShortcutActive = ref(true)
-const selectedIndex = ref(0)
-const pageNo = ref(1)
+// Keyboard shortcuts
+const { disableShortcuts, enableShortcuts } = useKeyboardShortcuts(goToPrev, goToNext);
 
-watch(selectedIndex, onSelectProfile)
-watch(pageNo, onChangePageNo)
-
-const onPrev = () => {
-  if (selectedIndex.value > 0) {
-    selectedIndex.value--
-  }
-}
-
-const onNext = () => {
-  if (selectedIndex.value < profiles.length - 1) {
-    selectedIndex.value++
-  }
-}
-
-const isPrevBtnDisabled = () => {
-  return selectedIndex.value == 0
-}
-
-const isNextBtnDisabled = () => {
-  return selectedIndex.value == profiles.length - 1
-}
-
-useKeypress({
-  keyEvent: "keyup",
-  keyBinds: [
-    {
-      keyCode: "left",
-      success: onPrev,
-      preventDefault: false, // the default is true
-    },
-    {
-      keyCode: "right",
-      success: onNext,
-      preventDefault: false, // the default is true
-    },
-  ],
-  isActive: isShortcutActive,
+// Watch for changes
+watch(selectedIndex, (newIndex) => {
+  props.onSelectProfile(newIndex);
 });
+
+watch(pageNo, (newPageNo) => {
+  props.onChangePageNo(newPageNo);
+});
+
+const isOnRecitationsPage = computed(() => currentRoute.path === ROUTE_TV_OUTPUT);
+
+const handleInputFocus = () => disableShortcuts();
+const handleInputBlur = () => enableShortcuts();
 </script>
 
 <template>
@@ -62,20 +53,112 @@ useKeypress({
     <div class="container header-content">
       <div class="left-side">
         <select id="selectedProfile-select" v-model="selectedIndex">
-          <option v-for="(data, index) in profiles" :key="index" :value="index">
-            {{ data['FIRST_AND_LAST_NAME'] }}
+          <option v-for="(profile, index) in profiles" :key="index" :value="index">
+            {{ profile[PROFILE_FIELDS.FIRST_AND_LAST_NAME] }}
           </option>
         </select>
 
-        <div class="p-1">
-          <button @click="onPrev" :disabled="isPrevBtnDisabled()">⬅️</button>
-          <button @click="onNext" :disabled="isNextBtnDisabled()">➡️</button>
+        <div class="navigation-buttons">
+          <button @click="goToPrev" :disabled="isPrevDisabled" aria-label="Previous participant">
+            ⬅️
+          </button>
+          <button @click="goToNext" :disabled="isNextDisabled" aria-label="Next participant">
+            ➡️
+          </button>
         </div>
       </div>
 
-      <div v-if="currentRoute.path == ROUTE_TV_OUTPUT">
-        <input v-model="pageNo" @focus="() => isShortcutActive = false" @blur="() => isShortcutActive = true" type="number" min="1" max="619" placeholder="Page">
+      <div class="right-side">
+        <div v-if="isOnRecitationsPage" class="page-number-container">
+          <label for="page-number-input">Input page number</label>
+          <input
+            id="page-number-input"
+            v-model.number="pageNo"
+            type="number"
+            :min="QURAN_MIN_PAGE"
+            :max="QURAN_MAX_PAGES"
+            placeholder="Page number"
+            @focus="handleInputFocus"
+            @blur="handleInputBlur"
+          />
+        </div>
+
+        <router-link
+          v-if="isOnRecitationsPage"
+          :to="ROUTE_HOME"
+          class="nav-link"
+        >
+          Back to Participant
+        </router-link>
+        <router-link
+          v-else
+          :to="ROUTE_TV_OUTPUT"
+          class="nav-link"
+        >
+          Recitations page
+        </router-link>
       </div>
     </div>
   </header>
 </template>
+
+<style lang="scss" scoped>
+@import '../assets/scss/variables';
+@import '../assets/scss/mixins';
+
+.navigation-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.page-number-container {
+  @include flex-center;
+  gap: $spacing-xs;
+
+  label {
+    font-size: $font-size-sm;
+    color: $color-gray;
+    margin-right: $spacing-xs;
+    white-space: nowrap;
+  }
+
+  input {
+    width: 100px;
+    min-width: auto;
+
+    &[type="number"] {
+      @include hide-number-spinner;
+    }
+
+    &[placeholder] {
+      text-align: left;
+      letter-spacing: 0;
+    }
+  }
+}
+
+.nav-link {
+  padding: 11px $spacing-sm;
+  font-size: $font-size-sm;
+  color: $color-gray;
+  text-decoration: none;
+  margin-right: $spacing-xs;
+  display: inline-block;
+  @include button-reset;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-orange;
+  }
+
+  &.router-link-active {
+    color: $color-orange;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.right-side {
+  @include flex-center;
+  gap: $spacing-xs;
+}
+</style>
