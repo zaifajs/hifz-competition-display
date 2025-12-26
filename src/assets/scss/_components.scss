@@ -1,0 +1,82 @@
+// Common Component Styles
+@import './variables';
+@import './mixins';
+
+// Form Elements
+select,
+input {
+  min-width: 200px;
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-size-sm;
+  letter-spacing: $letter-spacing-sm;
+  color: $color-gray;
+  @include input-reset;
+  margin-right: $spacing-xs;
+}
+
+button {
+  padding: 11px $spacing-sm;
+  font-size: $font-size-sm;
+  @include button-reset;
+  color: $color-gray;
+  margin-left: 5px;
+  margin-right: 5px;
+  transition: color $transition-base;
+
+  &:hover:not(:disabled) {
+    color: $color-orange;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Container
+.container {
+  max-width: $container-padding;
+  margin: 0 auto;
+
+  &.tv-output {
+    max-width: $container-padding-tv;
+  }
+}
+
+// Header
+header {
+  background-color: $color-black;
+
+  .header-content {
+    display: flex;
+    padding: $spacing-xs;
+    padding-left: $spacing-3xl;
+    padding-right: $spacing-3xl;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+    }
+  }
+}
+
+// Main Content
+main {
+  padding-top: $spacing-4xl;
+  padding-bottom: $spacing-4xl;
+  background-image: url(./images/bg-up.jpg), url(./images/bg-down.jpg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right bottom;
+  background-size: 300px 300px;
+  flex: 1;
+  max-height: calc(100vh - #{$header-height});
+
+  .main-content {
+    height: 100%;
+    padding: $spacing-xl;
+    background-color: $color-white;
+    border: $border-width-lg solid $color-orange;
+    border-radius: $border-radius-lg;
+    border-bottom-left-radius: 0;
+  }
+}

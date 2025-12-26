@@ -1,0 +1,104 @@
+@import './variables';
+@import './mixins';
+
+.main-content.tv-output {
+  display: flex;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+  overflow: hidden;
+  justify-content: start;
+  align-items: start;
+
+  .left-panel {
+    @include flex-column;
+    padding-top: $spacing-xl;
+    padding-right: $spacing-xl;
+    padding-bottom: 38px;
+    justify-content: space-between;
+    height: 100%;
+    min-width: 60%;
+
+    .stream-space {
+      aspect-ratio: 16 / 9;
+      background-color: $color-gray;
+    }
+
+    .details-container {
+      display: flex;
+      align-items: center;
+      background-image: url(../assets/images/name-bg-tv.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 110px;
+      border-bottom: $border-width solid $color-green;
+
+      .name-container {
+        font-size: $font-size-xl;
+        letter-spacing: $letter-spacing-sm;
+        padding-left: $spacing-sm;
+        padding-right: $spacing-sm;
+        flex: 1;
+        line-height: 30px;
+
+        span {
+          font-weight: $font-weight-semibold;
+        }
+      }
+
+      .country {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 40%;
+        font-size: $font-size-md;
+        letter-spacing: $letter-spacing-sm;
+        padding-right: $spacing-sm;
+
+        img {
+          width: $flag-size-tv;
+          margin-right: $spacing-xs;
+        }
+      }
+    }
+
+    .org-logo-container {
+      justify-content: space-between;
+      display: flex;
+      align-items: end;
+      margin-top: auto;
+      padding-top: 38px;
+
+      .org-logos {
+        width: 100%;
+
+        img {
+          height: $org-logo-height;
+        }
+      }
+
+      .category {
+        img {
+          height: $category-image-height-tv;
+        }
+      }
+    }
+  }
+
+  .right-panel {
+    border-left: $border-width solid rgba($color-light-2, 0.4);
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    .page-wrapper {
+      @include flex-center;
+    }
+
+    img {
+      max-height: calc(100% - $spacing-sm);
+    }
+  }
+}

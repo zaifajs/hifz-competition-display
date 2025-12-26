@@ -1,0 +1,122 @@
+@import './variables';
+@import './mixins';
+
+.main-content.profile {
+  display: flex;
+
+  .logo-container {
+    margin-top: auto;
+    padding-left: $spacing-xl;
+  }
+
+  .left-panel {
+    max-width: $profile-image-max-width;
+    width: 100%;
+    border-right: $border-width solid $color-green;
+    background: $color-bg-light;
+    display: flex;
+    max-height: 100%;
+    flex: 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: bottom;
+      transform: scale(1.2);
+    }
+  }
+
+  .right-panel {
+    @include flex-column;
+    flex: 1;
+
+    .name-container {
+      display: flex;
+      align-items: center;
+      padding-left: $spacing-xl;
+      min-height: 250px;
+      font-size: $font-size-4xl;
+      background: url(./images/name-bg.png) no-repeat;
+      border-bottom: $border-width solid $color-green;
+
+      * {
+        line-height: $font-size-4xl;
+        letter-spacing: $letter-spacing-md;
+      }
+
+      .name-last {
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .details-container {
+      padding-left: $spacing-xl;
+      padding-top: $spacing-2xl;
+      padding-bottom: $spacing-2xl;
+      border-bottom: $border-width solid $color-green;
+
+      > div {
+        display: flex;
+        align-items: center;
+      }
+
+      .meta {
+        min-width: 200px;
+      }
+
+      @include text-meta;
+
+      .age-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .age {
+        font-size: $font-size-5xl;
+        margin-left: -$spacing-xs;
+      }
+
+      .country {
+        display: flex;
+        align-items: center;
+        padding-left: $spacing-5xl;
+
+        .flag {
+          display: flex;
+          align-items: center;
+
+          .flag-details {
+            display: flex;
+            align-items: center;
+            padding-left: $spacing-lg;
+
+            img {
+              width: $flag-size;
+            }
+
+            span {
+              font-size: $font-size-lg;
+              padding-left: $spacing-xs;
+            }
+          }
+        }
+      }
+
+      .category {
+        flex-basis: 100%;
+        padding-top: $spacing-2xl;
+
+        .meta {
+          padding-right: $spacing-4xl;
+        }
+
+        img {
+          height: $category-image-height;
+        }
+      }
+    }
+  }
+}
