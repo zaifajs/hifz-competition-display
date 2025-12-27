@@ -14,7 +14,7 @@ export default defineConfig({
     minify: true,
   },
   server: {
-    open: '/fip',
+    open: '/fip/',
   },
   resolve: {
     alias: {
