@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import { ROUTE_HOME, ROUTE_TV_OUTPUT, QURAN_MIN_PAGE, QURAN_MAX_PAGES, PROFILE_FIELDS } from '../constants';
 import { useProfileNavigation } from '../composables/useProfileNavigation';
 import { useKeyboardShortcuts } from '../composables/useKeyboardShortcuts';
+import Dropdown from './Dropdown.vue';
 
 const props = defineProps({
   profiles: {
@@ -46,17 +47,23 @@ const isOnRecitationsPage = computed(() => currentRoute.path === ROUTE_TV_OUTPUT
 
 const handleInputFocus = () => disableShortcuts();
 const handleInputBlur = () => enableShortcuts();
+
+const handleDropdownOpen = () => disableShortcuts();
+const handleDropdownClose = () => enableShortcuts();
 </script>
 
 <template>
   <header>
     <div class="container header-content">
       <div class="left-side">
-        <select id="selectedProfile-select" v-model="selectedIndex">
-          <option v-for="(profile, index) in profiles" :key="index" :value="index">
-            {{ profile[PROFILE_FIELDS.FIRST_AND_LAST_NAME] }}
-          </option>
-        </select>
+        <Dropdown
+          v-model="selectedIndex"
+          :options="profiles"
+          option-label="FIRST_AND_LAST_NAME"
+          placeholder="Select participant"
+          @open="handleDropdownOpen"
+          @close="handleDropdownClose"
+        />
 
         <div class="navigation-buttons">
           <button @click="goToPrev" :disabled="isPrevDisabled" aria-label="Previous participant">
