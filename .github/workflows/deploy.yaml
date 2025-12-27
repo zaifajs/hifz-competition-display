@@ -25,7 +25,7 @@ jobs:
       - name: Create remote directories
         run: |
           sshpass -p "${{ secrets.SFTP_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SFTP_PORT }} ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_SERVER }} \
-            "cd ~/htdocs/hifz-competition.org 2>/dev/null || cd ~ && mkdir -p fip/dist/{categories,flags,participants-w,quran}"
+            "cd ~/htdocs/hifz-competition.org 2>/dev/null || cd ~ && mkdir -p fip/{categories,flags,participants-w,quran}"
 
       - name: Upload via SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
@@ -37,3 +37,12 @@ jobs:
             local_path: './dist/'
             remote_path: './fip/'
             sftp_only: true
+
+      - name: Move files from fip/dist to fip root
+        run: |
+          sshpass -p "${{ secrets.SFTP_PASSWORD }}" ssh -o StrictHostKeyChecking=no -p ${{ secrets.SFTP_PORT }} ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_SERVER }} \
+            "cd ~/htdocs/hifz-competition.org/fip 2>/dev/null || cd ~/fip && \
+             if [ -d dist ]; then \
+               find dist -mindepth 1 -maxdepth 1 -exec mv {} . \; 2>/dev/null || true && \
+               rmdir dist 2>/dev/null || rm -rf dist 2>/dev/null || true; \
+             fi"
